@@ -1,0 +1,25 @@
+<!-- WinMediaOverlay - Windows Media Now Playing Overlay for OBS -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>WinMediaOverlay - Now Playing</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+    <div class="music-overlay" id="musicOverlay">
+        <div class="album-cover" id="albumCover">
+            <img id="albumImage" style="display: none;" />
+        </div>
+        <div class="music-info">
+            <div class="track-title" id="trackTitle">Loading...</div>
+            <div class="artist-name" id="artistName">Apple Music Monitor</div>
+            <div class="album-name" id="albumName"></div>
+        </div>
+        <div class="status-indicator" id="statusIndicator"></div>
+    </div>
+
+    <script src="js/overlay.js"></script>
+</body>
+</html>

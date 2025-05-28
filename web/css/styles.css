@@ -1,0 +1,247 @@
+/* Apple Music Overlay - Default Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: transparent;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+.music-overlay {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 500px;
+    min-width: 300px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.music-overlay.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.album-cover {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.album-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+.album-cover::before {
+    content: '♪';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: white;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.album-cover.has-image::before {
+    opacity: 0;
+}
+
+.music-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.track-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+.artist-name {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+.album-name {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 2px;
+    line-height: 1.2;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #1db954;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.status-indicator.playing {
+    animation: pulse 2s infinite;
+}
+
+.status-indicator.paused {
+    background: #f59e0b;
+    animation: none;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(29, 185, 84, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(29, 185, 84, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(29, 185, 84, 0);
+    }
+}
+
+.music-overlay.fade-out {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* Scrolling text animation for long titles */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+.scrolling {
+    animation: scroll 10s linear infinite;
+}
+
+/* Loading state */
+.loading {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+/* Position variations */
+.position-top-left { 
+    top: 20px; 
+    left: 20px; 
+    bottom: auto; 
+}
+
+.position-top-right { 
+    top: 20px; 
+    right: 20px; 
+    left: auto; 
+    bottom: auto; 
+}
+
+.position-bottom-right { 
+    bottom: 20px; 
+    right: 20px; 
+    left: auto; 
+}
+
+.position-center { 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    bottom: auto; 
+}
+
+/* Compact mode */
+.compact {
+    padding: 12px;
+    gap: 12px;
+}
+
+.compact .album-cover {
+    width: 48px;
+    height: 48px;
+}
+
+.compact .track-title {
+    font-size: 14px;
+}
+
+.compact .artist-name {
+    font-size: 12px;
+}
+
+/* Theme variations - easily customizable */
+.theme-dark {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.theme-light {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #000;
+}
+
+.theme-light .track-title {
+    color: #000;
+}
+
+.theme-light .artist-name {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.theme-light .album-name {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.theme-accent-blue {
+    background: rgba(0, 122, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.theme-accent-purple {
+    background: rgba(88, 86, 214, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.theme-accent-green {
+    background: rgba(29, 185, 84, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}

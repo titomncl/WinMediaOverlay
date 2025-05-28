@@ -1,0 +1,110 @@
+/* 
+ * Custom CSS for Apple Music Overlay
+ * Edit this file to customize the appearance of your overlay
+ * This file is loaded after the default styles, so your changes will override them
+ */
+
+/* 
+ * EXAMPLES - Uncomment and modify as needed:
+ */
+
+/* 
+ * Change overlay position (uncomment one):
+ */
+/* .music-overlay { top: 20px; left: 20px; bottom: auto; }      /* Top-left */
+/* .music-overlay { top: 20px; right: 20px; left: auto; bottom: auto; } /* Top-right */
+/* .music-overlay { bottom: 20px; right: 20px; left: auto; }    /* Bottom-right */
+/* .music-overlay { top: 50%; left: 50%; transform: translate(-50%, -50%); bottom: auto; } /* Center */
+
+/* 
+ * Change overlay background and appearance:
+ */
+/* .music-overlay {
+    background: rgba(255, 255, 255, 0.95);  /* White background */
+    color: #000;
+    border: 2px solid #000;
+} */
+
+/* .music-overlay {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);  /* Gradient background */
+} */
+
+/* .music-overlay {
+    background: rgba(29, 185, 84, 0.9);  /* Spotify green */
+} */
+
+/* 
+ * Change text colors:
+ */
+/* .track-title { color: #000; }           /* Black title text */
+/* .artist-name { color: #666; }          /* Gray artist text */
+/* .album-name { color: #999; }           /* Light gray album text */
+
+/* 
+ * Change size and spacing:
+ */
+/* .music-overlay {
+    padding: 24px;                        /* More padding */
+    gap: 20px;                           /* More space between elements */
+    border-radius: 24px;                 /* More rounded corners */
+} */
+
+/* .album-cover {
+    width: 80px;                         /* Larger album cover */
+    height: 80px;
+    border-radius: 12px;
+} */
+
+/* 
+ * Make it compact:
+ */
+/* .music-overlay {
+    padding: 8px;
+    gap: 8px;
+    min-width: 250px;
+} */
+
+/* .album-cover {
+    width: 40px;
+    height: 40px;
+} */
+
+/* .track-title { font-size: 14px; }
+.artist-name { font-size: 12px; }
+.album-name { font-size: 10px; } */
+
+/* 
+ * Hide certain elements:
+ */
+/* .album-name { display: none; }         /* Hide album name */
+/* .status-indicator { display: none; }   /* Hide status indicator */
+
+/* 
+ * Change animations:
+ */
+/* .music-overlay {
+    transition: all 0.3s ease;           /* Faster animations */
+} */
+
+/* .music-overlay.visible {
+    transform: translateY(0) scale(1.05); /* Add scale effect */
+} */
+
+/* 
+ * Custom borders and shadows:
+ */
+/* .music-overlay {
+    border: 3px solid #1db954;           /* Green border */
+    box-shadow: 0 0 20px rgba(29, 185, 84, 0.5); /* Green glow */
+} */
+
+/* 
+ * Different font:
+ */
+/* .music-overlay {
+    font-family: 'Arial', sans-serif;
+} */
+
+/* 
+ * Your custom styles go here:
+ */
