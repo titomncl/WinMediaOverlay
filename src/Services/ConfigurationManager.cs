@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 
 namespace WinMediaOverlay.Services
 {
@@ -10,14 +11,16 @@ namespace WinMediaOverlay.Services
         public string BaseUrl { get; private set; } = "http://localhost:8080";
         public int Port { get; private set; } = 8080;
 
-        public ConfigurationManager()        {
+        public ConfigurationManager()
+        {
             // Initialize paths
             TempSessionFolder = Path.Combine(Path.GetTempPath(), "WinMediaOverlay", Guid.NewGuid().ToString("N")[..8]);
             AlbumCoversFolder = Path.Combine(TempSessionFolder, "album_covers");
         }
 
         public void InitializeTempFolder()
-        {            try
+        {
+            try
             {
                 // Clean up any old temp folders (from previous runs)
                 var baseTempPath = Path.Combine(Path.GetTempPath(), "WinMediaOverlay");
