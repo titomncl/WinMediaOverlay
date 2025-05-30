@@ -7,18 +7,26 @@ using WinMediaOverlay.Models;
 namespace WinMediaOverlay.Services
 {
     public class MediaOutputService
-    {
-        public async Task OutputMediaInfo(MediaInfo? mediaInfo)
+    {        public async Task OutputMediaInfo(MediaInfo? mediaInfo)
         {
             try
             {
                 var jsonOptions = new JsonSerializerOptions
-                {
-                    WriteIndented = true,
+                {                WriteIndented = true,
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                 };
 
-                var json = JsonSerializer.Serialize(mediaInfo, jsonOptions);
+                // If mediaInfo is null, create an empty media object indicating no music is playing
+                var outputInfo = mediaInfo ?? new MediaInfo
+                {
+                    Title = "",
+                    Artist = "",
+                    Album = "",
+                    IsPlaying = false,
+                    AlbumCoverPath = ""
+                };
+
+                var json = JsonSerializer.Serialize(outputInfo, jsonOptions);
                 await File.WriteAllTextAsync("media_info.json", json);
             }
             catch (Exception ex)
