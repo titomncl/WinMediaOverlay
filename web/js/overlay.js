@@ -81,35 +81,45 @@ class WinMediaOverlay {
         
         // Set up interval
         this.updateInterval = setInterval(updateMediaInfo, this.config.updateInterval);
-    }
-
-    updateDisplay(mediaInfo) {
+    }    updateDisplay(mediaInfo) {
         console.log('Updating display with:', mediaInfo);
         
-        if (!mediaInfo || this.isSameTrack(mediaInfo)) {
+        // Handle null or undefined mediaInfo
+        if (!mediaInfo) {
+            console.log('No media info available, showing no music state');
+            this.showNoMusic();
+            return;
+        }
+        
+        // Skip update if it's the same track
+        if (this.isSameTrack(mediaInfo)) {
             console.log('Same track or no media info, skipping update');
             return;
         }
         
         this.lastMediaInfo = mediaInfo;
         
-        if (mediaInfo.isPlaying) {
+        // Check if media has valid content and is playing
+        if (mediaInfo.isPlaying && mediaInfo.title && mediaInfo.title.trim() !== '') {
             console.log('Music is playing, showing info');
             this.showMusicInfo(mediaInfo);
         } else if (this.config.hideWhenNotPlaying) {
-            console.log('Music paused and hideWhenNotPlaying is true, hiding overlay');
+            console.log('Music paused/stopped and hideWhenNotPlaying is true, hiding overlay');
             this.hideOverlay();
-        } else {
+        } else if (mediaInfo.title && mediaInfo.title.trim() !== '') {
             console.log('Music paused, showing paused state');
             this.showPausedState(mediaInfo);
+        } else {
+            console.log('No valid media info, showing no music state');
+            this.showNoMusic();
         }
     }
-    
-    isSameTrack(mediaInfo) {
-        if (!this.lastMediaInfo) return false;
+      isSameTrack(mediaInfo) {
+        if (!this.lastMediaInfo || !mediaInfo) return false;
         
         return this.lastMediaInfo.artist === mediaInfo.artist &&
                this.lastMediaInfo.title === mediaInfo.title &&
+               this.lastMediaInfo.album === mediaInfo.album &&
                this.lastMediaInfo.isPlaying === mediaInfo.isPlaying;
     }
 
